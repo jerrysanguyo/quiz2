@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->longText('question');
+            $table->string('answer');
+            $table->string('choices1');
+            $table->string('choices2');
+            $table->string('choices3');
             $table->timestamps();
         });
     }

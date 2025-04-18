@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@layer utilities {
+    .bg-welcome {
+      @apply bg-cover bg-no-repeat bg-fixed bg-center;
+      background-image: url('/images/welcome-bg.webp');
+    }
+  }
