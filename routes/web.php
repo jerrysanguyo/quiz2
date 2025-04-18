@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     UserController,
     QuestionController,
     DashboardController,
+    DisabilityController,
 };
 
 Route::get('/', function () {
@@ -25,6 +26,7 @@ Route::middleware(['auth'])
                 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
                 Route::resource('question', QuestionController::class);
                 Route::resource('user', UserController::class);
+                Route::resource('disability', DisabilityController::class);
             });
 
         Route::middleware('role:admin')

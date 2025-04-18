@@ -65,14 +65,16 @@
                             class="fa-solid fa-book"></i></span>
                 </a>
                 <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
-                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-file-excel me-2"></i>
+                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
+                            class="fa-solid fa-file-excel me-2"></i>
                         Ms Excel</span>
                     <span x-show="sidebarCollapsed" x-cloak
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-file-excel"></i></span>
                 </a>
                 <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
-                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-file-powerpoint me-2"></i>
+                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
+                            class="fa-solid fa-file-powerpoint me-2"></i>
                         Ms Power point</span>
                     <span x-show="sidebarCollapsed" x-cloak
                         class="flex items-center justify-center w-full h-full font-medium"><i
@@ -86,14 +88,16 @@
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-minus text-white"></i></span>
                 </div>
-                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.user.index') }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.user.index') }}"
+                    class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-users me-2"></i>
                         Users</span>
                     <span x-show="sidebarCollapsed" x-cloak
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-users"></i></span>
                 </a>
-                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.question.index') }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.question.index') }}"
+                    class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-clipboard-question me-2"></i>
                         Question</span>
@@ -101,13 +105,28 @@
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-clipboard-question"></i></span>
                 </a>
-                <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.disability.index') }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-wheelchair me-2"></i>
                         Disability</span>
                     <span x-show="sidebarCollapsed" x-cloak
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-wheelchair"></i></span>
+                </a>
+                <div class="flex items-center gap-4 mt-5">
+                    <span x-show="!sidebarCollapsed" x-cloak class="text-sm font-semibold text-white">Others</span>
+                    <span x-show="sidebarCollapsed" x-cloak
+                        class="flex items-center justify-center w-full h-full font-medium"><i
+                            class="fa-solid fa-minus text-white"></i></span>
+                </div>
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.user.index') }}"
+                    class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
+                            class="fa-solid fa-list-check me-2"></i>
+                        Activity logs</span>
+                    <span x-show="sidebarCollapsed" x-cloak
+                        class="flex items-center justify-center w-full h-full font-medium"><i
+                            class="fa-solid fa-list-check"></i></span>
                 </a>
                 @endif
             </nav>
