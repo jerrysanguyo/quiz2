@@ -147,7 +147,7 @@
                     <div x-show="userDropdownOpen" x-cloak x-transition
                         class="absolute left-0 bottom-full mb-2 w-full bg-white shadow-md rounded z-10">
                         @if (Auth::user()->getRoleNames()->first() === 'superadmin')
-                        <a href="#" class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
+                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.role.index') }}" class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
                             <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                                     class="fa-solid fa-user-tie me-2"></i> Role</span>
                             <span x-show="sidebarCollapsed" x-cloak

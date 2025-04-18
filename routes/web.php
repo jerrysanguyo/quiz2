@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     QuestionController,
     DashboardController,
     DisabilityController,
+    RoleController,
 };
 
 Route::get('/', function () {
@@ -27,6 +28,7 @@ Route::middleware(['auth'])
                 Route::resource('question', QuestionController::class);
                 Route::resource('user', UserController::class);
                 Route::resource('disability', DisabilityController::class);
+                Route::resource('role', RoleController::class);
             });
 
         Route::middleware('role:admin')

@@ -5,9 +5,9 @@
         required>
 </div>
 <div class="mb-4 text-left">
-    <label for="text" class="block text-gray-700">Remarks:</label>
-    <input type="text" id="remarks" name="remarks" placeholder="Enter remarks"
-        value="{{ old('name', $record->remarks ?? '') }}"
+    <label for="guard_name" class="block text-gray-700">Guard:</label>
+    <input type="text" id="guard_name" name="guard_name" placeholder="Enter guard"
+        value="{{ old('guard_name', $record->guard_name ?? '') }}"
         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         required>
 </div>
