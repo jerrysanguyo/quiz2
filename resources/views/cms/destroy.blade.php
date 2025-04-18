@@ -10,10 +10,15 @@
             <button @click="showDeleteModal = false"
                 class="text-gray-600 hover:text-gray-800 text-2xl leading-none">&times;</button>
         </div>
-        <div class="mt-5 mb-3 text-gray-700 text-200 text-lg">
+        <div class="mt-5 mb-3 text-gray-700 text-200 text-md">
             <p>Are you sure you want to delete this record?</p>
-            <p class="mt-2"><span class="font-semibold">Name:</span> {{ $record->name }}</p>
-            <p><span class="font-semibold">Remarks:</span> {{ $record->remarks }}</p>
+            <p class="mt-2"><span class="font-semibold">{{ $page_title }}:</span>
+                @if($record->first_name)
+                {{ trim(($record->first_name ?? '') . ' ' . ($record->middle_name ?? '') . ' ' . ($record->last_name ?? '')) }}
+                @else
+                {{ $record->name }}
+                @endif
+            </p>
         </div>
         <div class="flex justify-end">
             <button type="button" @click="showDeleteModal = false"

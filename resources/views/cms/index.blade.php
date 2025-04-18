@@ -33,12 +33,11 @@
             @foreach ($data as $record)
             <tr class="border border-gray-200 hover:bg-gray-100 transition-colors">
                 <td class="py-1 px-4">{{ $record->id }}</td>
-                <td class="py-1 px-4">
-                    {{ Str::limit($record->name, 150) }}
-                </td>
                 @if($resource === 'role' || $resource === 'permission')
+                <td class="py-1 px-4">{{ Str::limit($record->name, 150) }}</td>
                 <td class="py-1 px-4">{{ $record->guard_name }}</td>
-                @else
+                @elseif ($resource === 'question')
+                <td class="py-1 px-4">{{ Str::limit($record->name, 150) }}</td>
                 <td class="py-1 px-4">
                     <ul class="list-none">
                         <li><strong>A.</strong> {{ $record->answer }}</li>
@@ -46,8 +45,15 @@
                         <li><strong>C.</strong> {{ $record->choices2 }}</li>
                         <li><strong>D.</strong> {{ $record->choices3 }}</li>
                     </ul>
-                </td> 
+                </td>
+                @elseif($resource === 'user')
+                <td class="py-1 px-4">{{ $record->first_name }} {{ $record->middle_name ?: '' }} {{ $record->last_name }}</td>
+                <td class="py-1 px-4">{{ $record->email }}</td>
+                @else
+                <td class="py-1 px-4">{{ $record->name }}</td>
+                <td class="py-1 px-4">{{ $record->remarks }}</td>
                 @endif
+
                 <td class="py-1 px-4">
                     <div class="inline-flex items-center space-x-2">
                         <div x-data="{ showEditModal: false }">
