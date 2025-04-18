@@ -88,6 +88,34 @@ class QuestionSeeder extends Seeder
                 'choices2' => '60 cm',
                 'choices3' => '0.06 cm',
             ],
+            ' This computing industry standard allows most of the world’s common characters to be read anywhere in the world without problems. A code of a character is displayed in the same manner as U+AC00. What is the name of this method, which was first released in October 1991?'
+            => [
+                'answer' => 'Unicode',
+                'choices1' => 'ASCII',
+                'choices2' => 'ISO 8859‑1',
+                'choices3' => 'UTF‑8',
+            ],
+            'Los Angeles International Airport (LAX) offers several services for persons with disabilities. One of them is a service that connects blind and low-vision individuals to their surroundings at the airport. – “WAYFINDING IN THE TERMINALS FOR PERSONS WITH VISION LOSS”. To use this service, you need to download the [XXXX] App from “App store” or “Play store” to your smartphone. What are the words to enter the above [ XXXX ] ?'
+            => [
+                'answer' => 'Aira',
+                'choices1' => 'NaviLens',
+                'choices2' => 'BlindSquare',
+                'choices3' => 'Seeing AI',
+            ],
+            '"Microsoft" founder Bill Gates, "Apple" founder Steve Jobs, "Facebook" founder Mark Zuckerberg, "Google" founder Larry Page are famous people like legends in the  IT industry. They all created new technologies with creative ideas. They had creative ideas, but only one person graduated from university (college) to get a bachelor\'s degree, and all others dropped out of university (college). Who has a bachelor\'s degree? Please choose from the examples below.'
+            => [
+                'answer' => 'Larry Page',
+                'choices1' => 'Mark Zuckerberg',
+                'choices2' => 'Steve Jobs',
+                'choices3' => 'Bill Gates',
+            ],
+            'United Nations (UN) has adopted the ‘Declaration of the Rights of Persons with Disabilities”. This declaration guarantees that disabled persons are entitled to respect for their dignity and that they have civil and political rights as well as rights to economic and social security. And discriminating against disabled people on grounds or situations that apply to them or their families is prohibited. In the year the “Declaration of the Rights of Persons with Disabilities” was declared, what name was given by the United Nations (UN) for that year?'
+            => [
+                'answer' => 'International Women’s Year',
+                'choices1' => 'International Year of Disabled Persons',
+                'choices2' => 'International Human Rights Year',
+                'choices3' => 'International Year of Peace',
+            ],
         ];
 
         foreach ($questions as $question => $data)

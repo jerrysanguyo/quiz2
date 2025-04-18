@@ -79,12 +79,12 @@ $(document).ready(function() {
     $('#{{ $resource }}-table').DataTable({
         processing: true,
         serverSide: false,
-        pageLength: 10,
+        pageLength: 5,
         order: [
             [0, 'desc']
         ],
 
-        dom: '<"flex justify-between items-center mb-4"lf>rt<"flex justify-between items-center mt-4"ip>',
+        dom: '<"flex justify-between items-center mb-2"lf>rt<"flex justify-between items-center mt-4"ip>',
 
         initComplete: function() {
             const table = this.api();
@@ -105,7 +105,7 @@ $(document).ready(function() {
         drawCallback: function(settings) {
             const $paginateButtons = $('div.dataTables_paginate .paginate_button');
             $paginateButtons.addClass(
-                'px-4 py-2 text-black rounded-lg hover:bg-[#1A4798]/20 disabled:opacity-50 ' +
+                'px-4 py-2 text-black rounded-lg hover:bg-[#F4C027] disabled:opacity-50 ' +
                 'disabled:cursor-not-allowed transition-colors'
             );
 

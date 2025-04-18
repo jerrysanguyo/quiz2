@@ -48,9 +48,9 @@
             </div>
             <div class="flex justify-end">
                 <button type="button" @click="showModal = false"
-                    class="px-4 py-2 mr-2 text-black rounded-lg hover:bg-gray-300 transition-colors">Cancel</button>
+                    class="px-4 py-2 mr-2 text-black rounded-lg hover:bg-[#F4C027] transition-colors">Cancel</button>
                 <button type="submit"
-                    class="px-4 py-2 text-white bg-gray-700 rounded-lg hover:bg-gray-300 hover:text-black transition-colors">Submit</button>
+                    class="px-4 py-2 text-white bg-[#1A4798] rounded-lg hover:bg-[#F4C027] hover:text-black transition-colors">Submit</button>
             </div>
         </form>
     </div>

@@ -65,18 +65,18 @@
                             class="fa-solid fa-book"></i></span>
                 </a>
                 <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
-                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-person me-2"></i>
+                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-file-excel me-2"></i>
                         Ms Excel</span>
                     <span x-show="sidebarCollapsed" x-cloak
                         class="flex items-center justify-center w-full h-full font-medium"><i
-                            class="fa-solid fa-person"></i></span>
+                            class="fa-solid fa-file-excel"></i></span>
                 </a>
                 <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
-                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-person me-2"></i>
+                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-file-powerpoint me-2"></i>
                         Ms Power point</span>
                     <span x-show="sidebarCollapsed" x-cloak
                         class="flex items-center justify-center w-full h-full font-medium"><i
-                            class="fa-solid fa-person"></i></span>
+                            class="fa-solid fa-file-powerpoint"></i></span>
                 </a>
 
                 @if (Auth::user()->getRoleNames()->first() === 'superadmin')
