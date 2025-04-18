@@ -10,7 +10,7 @@ class Question extends Model
     use HasFactory;
     protected $table = 'questions';
     protected $fillable = [
-        'question', 
+        'name', 
         'answer',
         'choices1',
         'choices2',
@@ -19,6 +19,7 @@ class Question extends Model
 
     public static function getAllQuestions()
     {
-        return self::all()->random();
+        // return self::all()->random();
+        return self::all();
     }
 }

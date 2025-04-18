@@ -15,11 +15,11 @@ class QuestionService
 
     public function update(array $data, $question): Question
     {
-        $question->update($data) ? $question : null;
+        return $question->update($data) ? $question : null;
     }
 
     public function destroy($question): Question
     {
-        $question->delete() ? $question : null;
+        return $question->delete() ? $question : null;
     }
 }

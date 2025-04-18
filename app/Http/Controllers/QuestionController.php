@@ -24,7 +24,7 @@ class QuestionController extends Controller
         $columns = ['id', 'questions', 'choices', 'action'];
         $data = Question::getAllQuestions();
 
-        return $dataTable->render('cms.view', compact(
+        return $dataTable->render('cms.index', compact(
             'dataTable',
             'page_title',
             'resource',
@@ -38,13 +38,13 @@ class QuestionController extends Controller
         $question = $this->questionServices->store($request->validated());
 
         activity()
-            ->perfomedOn($question)
+            ->performedOn($question)
             ->causedBy(Auth::user())
             ->log('Added a question: '. $question->name);
 
         return redirect()
             ->route(Auth::user()->getRoleNames()->first() . '.question.index')
-            ->with('Question added successfully!');
+            ->with('success', 'Question added successfully!');
     }
     
     public function update(QuestionRequest $request, Question $question)
@@ -58,7 +58,7 @@ class QuestionController extends Controller
 
         return redirect()
             ->route(Auth::user()->getRoleNames()->first() . '.question.index')
-            ->with('Question updated successfully!');
+            ->with('success', 'Question updated successfully!');
     }
     
     public function destroy(Question $question)
@@ -72,6 +72,6 @@ class QuestionController extends Controller
 
         return redirect()
             ->route(Auth::user()->getRoleNames()->first() . '.question.index')
-            ->with('Question deleted successfully!');
+            ->with('success', 'Question deleted successfully!');
     }
 }
