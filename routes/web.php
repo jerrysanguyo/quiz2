@@ -1,12 +1,43 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\{
+    Auth\AuthenticationController,
+    UserController,
+    QuestionController,
+    DashboardController,
+};
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('user', UserController::class);
-Route::get('/login', [UserController::class, 'login'])->name('login.index');
-Route::post('/login/authenticate', [UserController::class, 'authenticate'])->name('login.authenticate');
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login.index');
+Route::post('/login/authenticate', [AuthenticationController::class, 'authenticate'])->name('login.authenticate');
+
+Route::middleware(['auth'])
+    ->group(function () {
+
+        Route::middleware('role:superadmin')
+            ->prefix('superadmin')
+            ->name('superadmin.')
+            ->group(function () {
+                Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+                Route::resource('question', QuestionController::class);
+                Route::resource('user', UserController::class);
+            });
+
+        Route::middleware('role:admin')
+            ->prefix('admin')
+            ->name('admin.')
+            ->group(function () {
+                Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            });
+
+        Route::middleware('role:user')
+            ->prefix('user')
+            ->name('user.')
+            ->group(function () {
+                Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            });
+    });

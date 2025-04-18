@@ -21,12 +21,14 @@ class QuestionController extends Controller
     {
         $page_title = 'Question';
         $resource = 'question';
+        $columns = ['id', 'questions', 'choices', 'action'];
         $data = Question::getAllQuestions();
 
         return $dataTable->render('cms.view', compact(
             'dataTable',
             'page_title',
             'resource',
+            'columns',
             'data'
         ));
     }
