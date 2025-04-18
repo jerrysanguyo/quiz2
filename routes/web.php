@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     DashboardController,
     DisabilityController,
     RoleController,
+    PermissionController,
 };
 
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::middleware(['auth'])
                 Route::resource('user', UserController::class);
                 Route::resource('disability', DisabilityController::class);
                 Route::resource('role', RoleController::class);
+                Route::resource('permission', PermissionController::class);
             });
 
         Route::middleware('role:admin')
