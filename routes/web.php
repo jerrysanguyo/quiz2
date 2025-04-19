@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     DisabilityController,
     RoleController,
     PermissionController,
+    LogsController,
 };
 
 Route::get('/', function () {
@@ -31,6 +32,7 @@ Route::middleware(['auth'])
                 Route::resource('disability', DisabilityController::class);
                 Route::resource('role', RoleController::class);
                 Route::resource('permission', PermissionController::class);
+                Route::get('log', [LogsController::class, 'index'])->name('log.index');
             });
 
         Route::middleware('role:admin')

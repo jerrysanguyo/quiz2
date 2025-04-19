@@ -119,7 +119,7 @@
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-minus text-white"></i></span>
                 </div>
-                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.user.index') }}"
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.log.index') }}"
                     class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-list-check me-2"></i>
