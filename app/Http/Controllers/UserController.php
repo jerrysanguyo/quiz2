@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Answer;
 use App\Models\Disability;
 use App\DataTables\CmsDataTable;
 use App\Http\Requests\UserRequest;
@@ -86,14 +87,24 @@ class UserController extends Controller
 
     public function profile(User $user)
     {
+        $results = Answer::getResultsForUser(Auth::user()->id);
+        $totalQuestions = $results->count();
+        $correctAnswers = $results->where('is_correct', true)->count();
+        $scorePercent = $totalQuestions > 0 ? round(($correctAnswers / $totalQuestions) * 100, 2) : 0;
         $page_title = 'Profile';
         $resource = 'user';
         $record = User::getUser(Auth::user()->id);
+        $subData  = Disability::getAllDisabilities();
         return view('profile.index', compact(
             'page_title',
             'record',
             'resource',
-            'user'
+            'subData',
+            'user',
+            'results',
+            'totalQuestions',
+            'correctAnswers',
+            'scorePercent'
         ));
     }
 }

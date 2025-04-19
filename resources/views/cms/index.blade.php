@@ -49,7 +49,7 @@
                 @elseif($resource === 'user')
                 <td class="py-1 px-4">{{ $record->first_name }} {{ $record->middle_name ?: '' }} {{ $record->last_name }}</td>
                 <td class="py-1 px-4">{{ $record->email }}</td>
-                <td class="py-1 px-4">{{ $record->userDisability->disability->name }}</td>
+                <td class="py-1 px-4">{{ $record->userDisability->disability->name ?? 'N/A' }}</td>
                 @else
                 <td class="py-1 px-4">{{ $record->name }}</td>
                 <td class="py-1 px-4">{{ $record->remarks }}</td>

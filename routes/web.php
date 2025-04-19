@@ -10,6 +10,8 @@ use App\Http\Controllers\{
     RoleController,
     PermissionController,
     LogsController,
+    QuizController,
+    AnswerController,
 };
 
 Route::get('/', function () {
@@ -35,6 +37,8 @@ Route::middleware(['auth'])
                 Route::resource('permission', PermissionController::class);
                 Route::get('log', [LogsController::class, 'index'])->name('log.index');
                 Route::get('/profile-update', [UserController::class, 'profile'])->name('profile');
+                Route::get('/general-knowledge', [QuizController::class, 'general'])->name('general');
+                Route::resource('answer', AnswerController::class);
             });
 
         Route::middleware('role:admin')

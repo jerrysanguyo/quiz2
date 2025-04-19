@@ -33,7 +33,7 @@
                     transition-transform duration-300">
                 <i class="fa-solid fa-brain text-4xl mb-3"></i>
                 <h3 class="text-lg font-semibold">General Knowledge</h3>
-                <span class="mt-2 text-lg font-medium">Score: {{ $scores['general'] ?? 0 }}</span>
+                <span class="mt-2 text-lg font-medium">Score: {{ $scorePercent ?? 0 }}%</span>
             </div>
             <div class="flex flex-col items-center justify-center p-6
                     bg-gradient-to-br from-green-600 to-green-500 text-white

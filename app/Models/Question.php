@@ -19,7 +19,20 @@ class Question extends Model
 
     public static function getAllQuestions()
     {
-        // return self::all()->random();
         return self::all();
+    }
+
+    public static function getQuestion()
+    {
+        return self::whereNotIn('id', function ($query) {
+            $query->select('question_id')
+                  ->from('answers')
+                  ->where('user_id', auth()->id());
+        })->inRandomOrder()->first();
+    }
+
+    public function answer()
+    {
+        return $this->hasMany(Answer::class);
     }
 }
