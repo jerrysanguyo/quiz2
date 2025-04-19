@@ -4,7 +4,9 @@
 <div class="flex items-center justify-center min-h-screen px-4">
     <div class="w-full max-w-md p-6 bg-white bg-opacity-90 backdrop-blur rounded-lg shadow-lg">
         <h2 class="text-4xl font-bold text-center text-blue-600 mb-2">Welcome!</h2>
-        <p class="text-center text-md text-gray-400 mb-6 ">Kindly login your user credentials to access the dashboard!</p>
+        <p class="text-center text-md text-gray-400 mb-6 ">Kindly login your user credentials to access the dashboard!
+        </p>
+        @include('components.alert')
         <form method="POST" action="{{ route('login.authenticate') }}" class="space-y-4" aria-label="Login form">
             @csrf
             <div>

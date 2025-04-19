@@ -169,7 +169,7 @@
                                 class="flex items-center justify-center w-full h-full font-medium"><i
                                     class="fa-solid fa-user"></i></span>
                         </a>
-                        <form action="#" method="POST" class="block">
+                        <form action="{{ route('logout') }}" method="POST" class="block">
                             @csrf
                             <button type="submit"
                                 class="block w-full text-left py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition focus:outline-none">

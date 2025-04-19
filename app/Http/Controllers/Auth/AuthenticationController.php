@@ -48,15 +48,17 @@ class AuthenticationController extends Controller
 
     public function logout()
     {
-        $user = $this->authServices->logout();
-
+        $user = Auth::user();
+        
+        $this->authServices->logout(); 
+        
         activity()
             ->performedOn($user)
             ->causedBy($user)
-            ->log('Successful logout');
+            ->log('Successfully logged out');
 
         return redirect()
-            ->route('login.page')
-            ->with('success','You have successfully logged out!');
+            ->route('login.index')
+            ->with('success', 'You have successfully logged out!');
     }
 }

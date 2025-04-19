@@ -18,8 +18,10 @@ class AuthenticateService
         return null;
     }
 
-    public function logout(): void
+    public function logout(): ?User
     {
+        $user = Auth::user();
         Auth::logout();
+        return $user;
     }
 }
