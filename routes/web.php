@@ -34,6 +34,7 @@ Route::middleware(['auth'])
                 Route::resource('role', RoleController::class);
                 Route::resource('permission', PermissionController::class);
                 Route::get('log', [LogsController::class, 'index'])->name('log.index');
+                Route::get('/profile-update', [UserController::class, 'profile'])->name('profile');
             });
 
         Route::middleware('role:admin')

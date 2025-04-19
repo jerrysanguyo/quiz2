@@ -19,4 +19,9 @@ class Disability extends Model
     {
         return self::all();
     }
+    
+    public function disability()
+    {
+        return $this->hasMany(UserDisability::class);
+    }
 }

@@ -43,7 +43,7 @@
                             class="fa-solid fa-minus text-white"></i></span>
                 </div>
 
-                <a href="#}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.dashboard') }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-table-columns me-2"></i> Dashboard</span>
                     <span x-show="sidebarCollapsed" x-cloak
@@ -58,11 +58,11 @@
                             class="fa-solid fa-minus text-white"></i></span>
                 </div>
                 <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
-                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-book me-2"></i>
+                    <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-brain me-2"></i>
                         General knowledge</span>
                     <span x-show="sidebarCollapsed" x-cloak
                         class="flex items-center justify-center w-full h-full font-medium"><i
-                            class="fa-solid fa-book"></i></span>
+                            class="fa-solid fa-brain"></i></span>
                 </a>
                 <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
@@ -162,7 +162,7 @@
                                     class="fa-solid fa-lock"></i></span>
                         </a>
                         @endif
-                        <a href="#" class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
+                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.profile') }}" class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
                             <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                                     class="fa-solid fa-user me-2"></i> Profile</span>
                             <span x-show="sidebarCollapsed" x-cloak

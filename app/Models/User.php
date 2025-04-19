@@ -35,4 +35,14 @@ class User extends Authenticatable
     {
         return self::all();
     }
+
+    public static function getUser($user)
+    {
+        return self::where('id', $user)->first();
+    }
+
+    public function userDisability()
+    {
+        return $this->hasOne(UserDisability::class);
+    }
 }
