@@ -12,6 +12,7 @@ use App\Http\Controllers\{
     LogsController,
     QuizController,
     AnswerController,
+    ScoreController,
 };
 
 Route::get('/', function () {
@@ -35,10 +36,12 @@ Route::middleware(['auth'])
                 Route::resource('disability', DisabilityController::class);
                 Route::resource('role', RoleController::class);
                 Route::resource('permission', PermissionController::class);
+                Route::resource('answer', AnswerController::class);
+                Route::resource('score', ScoreController::class);
+                Route::post('score/store/{user}', [ScoreController::class, 'scoreStore'])->name('score.userStore');
                 Route::get('log', [LogsController::class, 'index'])->name('log.index');
                 Route::get('/profile-update', [UserController::class, 'profile'])->name('profile');
                 Route::get('/general-knowledge', [QuizController::class, 'general'])->name('general');
-                Route::resource('answer', AnswerController::class);
             });
 
         Route::middleware('role:admin')
@@ -51,6 +54,8 @@ Route::middleware(['auth'])
                 Route::resource('disability', DisabilityController::class);
                 Route::resource('role', RoleController::class);
                 Route::resource('permission', PermissionController::class);
+                Route::resource('score', ScoreController::class);
+                Route::post('score/store/{user}', [ScoreController::class, 'scoreStore'])->name('score.userStore');
                 Route::get('/profile-update', [UserController::class, 'profile'])->name('profile');
             });
 

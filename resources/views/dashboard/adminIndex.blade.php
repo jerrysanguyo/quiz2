@@ -23,10 +23,10 @@
             <tr class="border border-gray-200 hover:bg-gray-100 transition-colors">
                 <td class="py-1 px-4">{{ $record->first_name }} {{ $record->middle_name }} {{ $record->last_name }}</td>
                 <td class="py-1 px-4">{{ $record->userDisability->disability->name ?? 'N/A' }}</td>
-                <td class="py-1 px-4">{{ ($record->scorePercent ?? 0 ).' %' }}</td>
-                <td class="py-1 px-4">{{ ($record->excelPercent ?? 0).' %' }}</td>
-                <td class="py-1 px-4">{{ ($record->pptPercent ?? 0).' %' }}</td>
-                <td class="py-1 px-4">{{ ($record->totalPercent ?? 0).' %' }}</td>
+                <td class="py-1 px-4">{{ $record->scorePercent  }} %</td>
+                <td class="py-1 px-4">{{ $record->excel        }} %</td>
+                <td class="py-1 px-4">{{ $record->ppt          }} %</td>
+                <td class="py-1 px-4">{{ $record->totalPercent }} %</td>
 
                 <td class="py-1 px-4">
                     <div x-data="{ open: false, addExcelScore: false, addPptScore: false }"

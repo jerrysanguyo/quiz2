@@ -13,7 +13,7 @@
                     transition-transform duration-300">
         <i class="fa-solid fa-file-excel text-4xl mb-3"></i>
         <h3 class="text-lg font-semibold">MS Excel</h3>
-        <span class="mt-2 text-lg font-medium">Score: {{ $scores['excel'] ?? 0 }}</span>
+        <span class="mt-2 text-lg font-medium">Score: {{ $excelScore->score ?? 0 }} %</span>
     </div>
     <div class="flex flex-col items-center justify-center p-6
                     bg-gradient-to-br from-yellow-500 to-yellow-400 text-white
@@ -21,6 +21,6 @@
                     transition-transform duration-300">
         <i class="fa-solid fa-file-powerpoint text-4xl mb-3"></i>
         <h3 class="text-lg font-semibold">MS PowerPoint</h3>
-        <span class="mt-2 text-lg font-medium">Score: {{ $scores['ppt'] ?? 0 }}</span>
+        <span class="mt-2 text-lg font-medium">Score: {{ $pptScore->score ?? 0 }}</span>
     </div>
 </div>

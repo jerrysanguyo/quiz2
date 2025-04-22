@@ -62,4 +62,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function userScore()
+    {
+        return $this->hasMany(Score::class);
+    }
+
+    public function excelScore()
+    {
+        return $this->hasOne(Score::class)
+                    ->where('remarks', 'excel');
+    }
+
+    public function pptScore()
+    {
+        return $this->hasOne(Score::class)
+                    ->where('remarks', 'ppt');
+    }
 }
