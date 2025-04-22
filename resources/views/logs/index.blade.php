@@ -6,12 +6,11 @@
         ['label' => $page_title, 'url' => route(Auth::user()->getRoleNames()->first() . '.' . $resource . '.index')],
     ]" />
 @endsection
-
-<div class="flex justify-between mb-5 overflow-auto">
-    <h1 class="text-3xl font-bold mb-2 text-center text-gray-800">{{ $page_title }} records</h1>
-</div>
 @include('components.alert')
-<div class="w-full bg-white p-8 rounded-lg shadow-lg border border-gray-200 overflow-auto max-h-[75vh]">
+<div class="w-full bg-white p-8 rounded-lg shadow-lg border border-gray-200 overflow-auto max-h-[80vh] min-h-[80vh]">
+    <div class="flex justify-between mb-5 overflow-auto">
+        <h1 class="text-3xl font-bold mb-2 text-center text-gray-800">{{ $page_title }} records</h1>
+    </div>
     <table class="min-w-full border border-gray-200 shadow-lg" id="{{ $resource }}-table">
         <thead class="bg-[#1A4798]">
             <tr class="text-white uppercase text-md leading-normal">
@@ -63,7 +62,7 @@ $(document).ready(function() {
     $('#{{ $resource }}-table').DataTable({
         processing: true,
         serverSide: false,
-        pageLength: 5,
+        pageLength: 10,
         order: [
             [0, 'desc']
         ],

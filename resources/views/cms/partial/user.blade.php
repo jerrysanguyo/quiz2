@@ -13,8 +13,7 @@
         <label for="middle_name" class="block text-gray-700">Middle name</label>
         <input type="text" id="middle_name" name="middle_name" placeholder="Enter Middle name"
             value="{{ old('middle_name', $record->middle_name ?? '') }}"
-            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required>
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
         @error('middle_name')
         <p class="text-sm text-red-700">{{ $message }}</p>
         @enderror
@@ -46,7 +45,9 @@
         <select name="disability_id" id="disability_id"
             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             @foreach ($subData as $data)
-            <option value="{{ $data->id }}" {{ old('disability_id', $record->userDisability->disability_id ?? '') === $data->id ? 'selected' : '' }}>{{ $data->name }}</option>
+            <option value="{{ $data->id }}"
+                {{ old('disability_id', $record->userDisability->disability_id ?? '') === $data->id ? 'selected' : '' }}>
+                {{ $data->name }}</option>
             @endforeach
         </select>
         @error('disability_id')

@@ -43,16 +43,22 @@
             <input type="hidden" name="question_id" value="{{ $question->id }}">
             <input type="hidden" name="time_spent" :value="totalTime - timeLeft">
 
-            <div class="grid grid-cols-1 gap-4">
-                @foreach ($choices as $index => $choice)
-                <label
-                    class="flex items-center px-4 py-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition duration-200"
-                    :class="{ 'bg-blue-100 border-blue-600 text-blue-900 font-semibold': selected === '{{ $choice['value'] }}' }">
-                    <input type="radio" name="answer" value="{{ $choice['value'] }}" class="hidden" x-model="selected">
-                    <div class="w-full text-left">{{ $choice['value'] }}</div>
+            <div class="grid grid-cols-1 gap-4" x-data="{ selected: '' }">
+                @foreach ($choices as $choice)
+                <label tabindex="0" class="relative flex items-center px-4 py-3 border border-gray-300 rounded-lg cursor-pointer
+             hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" :class="{ 
+        'bg-blue-100 border-blue-600 text-blue-900 font-semibold': selected === '{{ $choice['value'] }}' 
+      }" @keydown.enter.prevent="selected = '{{ $choice['value'] }}'"
+                    @keydown.space.prevent="selected = '{{ $choice['value'] }}'">
+                    <input type="radio" name="answer" value="{{ $choice['value'] }}"
+                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" x-model="selected" />
+                    <div class="w-full text-left">
+                        {{ $choice['value'] }}
+                    </div>
                 </label>
                 @endforeach
             </div>
+
 
             <div class="mt-6">
                 <button type="submit" x-ref="submitBtn"

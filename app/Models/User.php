@@ -36,6 +36,18 @@ class User extends Authenticatable
         return self::all();
     }
 
+    public static function getRole()
+    {
+        return Role::all();
+    }
+
+    public static function getAllContestants()
+    {
+        return self::role('user')
+            ->with('roles')
+            ->get();
+    }
+
     public static function getUser($user)
     {
         return self::where('id', $user)->first();

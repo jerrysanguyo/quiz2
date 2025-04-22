@@ -14,7 +14,7 @@ class DisabilitySeeder extends Seeder
             'Psychosocial',
             'Chronic Illness',
             'Learning',
-            'Mental',
+            'Intellectual',
             'Visual',
             'Orthopedic',
             'Communication',

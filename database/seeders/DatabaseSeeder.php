@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             DisabilitySeeder::class,
             QuestionSeeder::class,
             AdminSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

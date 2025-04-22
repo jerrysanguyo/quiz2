@@ -1,12 +1,3 @@
-@extends('layouts.dashboard')
-@section('content')
-
-@section('breadcrumb')
-<x-breadcrumb :items="[
-        ['label' => $page_title, 'url' => route(Auth::user()->getRoleNames()->first() . '.' . $resource . '.index')],
-    ]" />
-@endsection
-@include('components.alert')
 <div class="w-full bg-white p-8 rounded-lg shadow-lg border border-gray-200 overflow-auto max-h-[80vh] min-h-[80vh]">
     <div class="flex justify-between items-center mb-5 overflow-auto">
         <h1 class="text-3xl font-bold mb-2 text-center text-gray-800">{{ $page_title }} records</h1>
@@ -15,7 +6,6 @@
                 class="px-5 py-2 text-white bg-[#1A4798] rounded-lg hover:bg-[#F4C027] hover:text-black hover:border border-[#F4C027] transition-colors">
                 <i class="fa-solid fa-plus"></i> Add {{ $resource }}
             </button>
-            @include('cms.create')
         </div>
     </div>
     <table class="min-w-full border border-gray-200 shadow-lg" id="{{ $resource }}-table">
@@ -29,50 +19,38 @@
             </tr>
         </thead>
         <tbody class="text-gray-600 text-sm font-normal text-center">
-            @foreach ($data as $record)
+            @foreach ($contestants as $record)
             <tr class="border border-gray-200 hover:bg-gray-100 transition-colors">
-                <td class="py-1 px-4">{{ $record->id }}</td>
-                @if($resource === 'role' || $resource === 'permission')
-                <td class="py-1 px-4">{{ Str::limit($record->name, 150) }}</td>
-                <td class="py-1 px-4">{{ $record->guard_name }}</td>
-                @elseif ($resource === 'question')
-                <td class="py-1 px-4">{{ Str::limit($record->name, 150) }}</td>
-                <td class="py-1 px-4">
-                    <ul class="list-none">
-                        <li><strong>A.</strong> {{ $record->answer }}</li>
-                        <li><strong>B.</strong> {{ $record->choices1 }}</li>
-                        <li><strong>C.</strong> {{ $record->choices2 }}</li>
-                        <li><strong>D.</strong> {{ $record->choices3 }}</li>
-                    </ul>
-                </td>
-                @elseif($resource === 'user')
-                <td class="py-1 px-4">{{ $record->first_name }} {{ $record->middle_name ?: '' }}
-                    {{ $record->last_name }}</td>
-                <td class="py-1 px-4">{{ $record->email }}</td>
+                <td class="py-1 px-4">{{ $record->first_name }} {{ $record->middle_name }} {{ $record->last_name }}</td>
                 <td class="py-1 px-4">{{ $record->userDisability->disability->name ?? 'N/A' }}</td>
-                @else
-                <td class="py-1 px-4">{{ $record->name }}</td>
-                <td class="py-1 px-4">{{ $record->remarks }}</td>
-                @endif
+                <td class="py-1 px-4">{{ ($record->scorePercent ?? 0 ).' %' }}</td>
+                <td class="py-1 px-4">{{ ($record->excelPercent ?? 0).' %' }}</td>
+                <td class="py-1 px-4">{{ ($record->pptPercent ?? 0).' %' }}</td>
+                <td class="py-1 px-4">{{ ($record->totalPercent ?? 0).' %' }}</td>
 
                 <td class="py-1 px-4">
-                    <div class="inline-flex items-center space-x-2">
-                        <div x-data="{ showEditModal: false }">
-                            <button @click="showEditModal = true"
-                                class="inline-block p-2 bg-blue-100 text-blue-500 hover:bg-blue-200 hover:text-blue-700 rounded transition-colors"
-                                title="Edit">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            @include('cms.edit')
+                    <div x-data="{ open: false, addExcelScore: false, addPptScore: false }"
+                        class="relative inline-block text-left">
+                        <button @click="open = !open"
+                            class="inline-flex items-center p-2 text-white bg-[#1A4798] rounded-lg hover:bg-[#F4C027] hover:text-black hover:border border-[#F4C027] transition-colors"
+                            aria-haspopup="true" :aria-expanded="open">
+                            Action <i class="fa-solid fa-ellipsis-v mx-2"></i>
+                        </button>
+                        <div x-show="open" @click.away="open = false" x-transition
+                            class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-[#F4C027] z-10">
+                            <div class="py-1">
+                                <a href="#" @click.prevent="addExcelScore = true; open = false"
+                                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:text-white hover:border border-[#F4C027]">
+                                    <i class="fa-solid fa-file-excel me-2"></i>Ms excel score
+                                </a>
+                                <a href="#" @click.prevent="addPptScore = true; open = false"
+                                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:text-white hover:border border-[#F4C027]">
+                                    <i class="fa-solid fa-file-powerpoint me-2"></i>Ms PPT score
+                                </a>
+                            </div>
                         </div>
-                        <div x-data="{ showDeleteModal: false }">
-                            <button @click="showDeleteModal = true"
-                                class="inline-block p-2 bg-red-100 text-red-500 hover:bg-red-200 hover:text-red-700 rounded transition-colors"
-                                title="Delete">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            @include('cms.destroy')
-                        </div>
+                        @include('dashboard.excel')
+                        @include('dashboard.ppt')
                     </div>
                 </td>
             </tr>
@@ -125,5 +103,3 @@ $(document).ready(function() {
     });
 });
 </script>
-
-@endsection

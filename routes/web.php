@@ -46,12 +46,22 @@ Route::middleware(['auth'])
             ->name('admin.')
             ->group(function () {
                 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+                Route::resource('question', QuestionController::class);
+                Route::resource('user', UserController::class);
+                Route::resource('disability', DisabilityController::class);
+                Route::resource('role', RoleController::class);
+                Route::resource('permission', PermissionController::class);
+                Route::get('/profile-update', [UserController::class, 'profile'])->name('profile');
             });
 
         Route::middleware('role:user')
             ->prefix('user')
             ->name('user.')
             ->group(function () {
+                Route::resource('user', UserController::class)->only('update');
                 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+                Route::get('/profile-update', [UserController::class, 'profile'])->name('profile');
+                Route::get('/general-knowledge', [QuizController::class, 'general'])->name('general');
+                Route::resource('answer', AnswerController::class);
             });
     });
