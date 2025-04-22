@@ -48,6 +48,7 @@ class DashboardController extends Controller
         $scorePercent = $totalQuestions > 0 ? round(($correctAnswers / $totalQuestions) * 100, 2) : 0;
         $excelScore = Score::getUserExcelScore(Auth::user()->id);
         $pptScore = Score::getUserPptScore(Auth::user()->id);
+        $summary = Answer::getQuizSummary(Auth::user()->id);
 
         return view('dashboard', compact(
             'contestants',
@@ -60,6 +61,7 @@ class DashboardController extends Controller
             'scorePercent',
             'excelScore',
             'pptScore',
+            'summary',
         ));
     }
 }

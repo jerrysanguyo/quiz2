@@ -27,18 +27,23 @@ class Answer extends Model
     }
 
     public static function getResultsForUser($user)
-{
-    return self::with('question')
-        ->where('user_id', $user)
-        ->get()
-        ->map(function ($answer) {
-            return [
-                'question'       => $answer->question->name,
-                'your_answer'    => $answer->answer,
-                'correct_answer' => $answer->question->answer,
-                'is_correct'     => $answer->answer === $answer->question->answer,
-                'time_spent'     => $answer->time_spent,
-            ];
-        });
-}
+    {
+        return self::with('question')
+            ->where('user_id', $user)
+            ->get()
+            ->map(function ($answer) {
+                return [
+                    'question'       => $answer->question->name,
+                    'your_answer'    => $answer->answer,
+                    'correct_answer' => $answer->question->answer,
+                    'is_correct'     => $answer->answer === $answer->question->answer,
+                    'time_spent'     => $answer->time_spent,
+                ];
+            });
+    }
+
+    public static function getQuizSummary($user)
+    {
+        return self::where('user_id', $user)->get();
+    }
 }

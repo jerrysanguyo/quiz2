@@ -24,7 +24,7 @@ class ScoreController extends Controller
         activity()
             ->performedOn($score)
             ->causedBy(Auth::user())
-            ->log('This user: '. Auth::user()->first_name . ' ' . Auth::user()->last_name . 'added a ' . $score->remarks . ' score to user: '. $score->user->first_name .' '. $score->user->last_name);
+            ->log('This user: '. Auth::user()->first_name . ' ' . Auth::user()->last_name . ' added a ' . $score->remarks . ' score to user: '. $score->user->first_name .' '. $score->user->last_name);
 
         return redirect()
             ->route(Auth::user()->getRoleNames()->first() . '.dashboard')
@@ -38,7 +38,7 @@ class ScoreController extends Controller
         activity()
             ->performedOn($score)
             ->causedBy(Auth::user())
-            ->log('This user: '. Auth::user()->first_name . ' ' . Auth::user()->last_name . 'updated a ' . $score->remarks . ' score to user: '. $score->user->first_name .' '. $score->user->last_name);
+            ->log('This user: '. Auth::user()->first_name . ' ' . Auth::user()->last_name . ' updated a ' . $score->remarks . ' score to user: '. $score->user->first_name .' '. $score->user->last_name);
 
         return redirect()
             ->route(Auth::user()->getRoleNames()->first() . '.dashboard')
@@ -52,7 +52,7 @@ class ScoreController extends Controller
         activity()
             ->performedOn($score)
             ->causedBy(Auth::user())
-            ->log('This user: '. Auth::user()->first_name . ' ' . Auth::user()->last_name . 'deleted a ' . $score->remarks . ' score to user: '. $score->user->first_name .' '. $score->user->last_name);
+            ->log('This user: '. Auth::user()->first_name . ' ' . Auth::user()->last_name . ' deleted a ' . $score->remarks . ' score to user: '. $score->user->first_name .' '. $score->user->last_name);
 
         return redirect()
             ->route(Auth::user()->getRoleNames()->first() . '.dashboard')

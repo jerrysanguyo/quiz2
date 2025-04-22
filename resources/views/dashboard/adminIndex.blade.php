@@ -1,12 +1,6 @@
 <div class="w-full bg-white p-8 rounded-lg shadow-lg border border-gray-200 overflow-auto max-h-[80vh] min-h-[80vh]">
     <div class="flex justify-between items-center mb-5 overflow-auto">
         <h1 class="text-3xl font-bold mb-2 text-center text-gray-800">{{ $page_title }} records</h1>
-        <div x-data="{ showModal: false }">
-            <button @click="showModal = true"
-                class="px-5 py-2 text-white bg-[#1A4798] rounded-lg hover:bg-[#F4C027] hover:text-black hover:border border-[#F4C027] transition-colors">
-                <i class="fa-solid fa-plus"></i> Add {{ $resource }}
-            </button>
-        </div>
     </div>
     <table class="min-w-full border border-gray-200 shadow-lg" id="{{ $resource }}-table">
         <thead class="bg-[#1A4798]">

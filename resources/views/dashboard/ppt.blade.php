@@ -23,7 +23,7 @@
                     <input type="hidden" name="remarks" value="ppt">
                     <label for="score" class="block text-md text-gray-700">PPT score:</label>
                     <input type="text" id="score" name="score" placeholder="score"
-                        value="{{ old('score', $record->excel) ?? '' }}" step="0.01"
+                        value="{{ old('score', $record->ppt) ?? '' }}" step="0.01"
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                     @error('score')
