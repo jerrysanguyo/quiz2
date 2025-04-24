@@ -11,19 +11,19 @@
                 class="text-gray-600 hover:text-gray-800 text-2xl leading-none">&times;</button>
         </div>
         @if ($record->ppt == 0)
-            <form action="{{ route(Auth::user()->getRoleNames()->first() . '.score.userStore', $record->id) }}"
+        <form action="{{ route(Auth::user()->getRoleNames()->first() . '.score.userStore', $record->id) }}"
             method="POST">
-        @else
+            @else
             <form action="{{ route(Auth::user()->getRoleNames()->first() . '.score.update', $record->pptScore->id) }}"
                 method="POST">
                 @method('PUT')
-        @endif
+                @endif
                 @csrf
                 <div class="my-3">
                     <input type="hidden" name="remarks" value="ppt">
                     <label for="score" class="block text-md text-gray-700">PPT score:</label>
                     <input type="text" id="score" name="score" placeholder="score"
-                        value="{{ old('score', $record->ppt) ?? '' }}" step="0.01"
+                        value="{{ old('score', $record->pptScore) ?? '' }}" step="0.01" min="0" max="15"
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                     @error('score')

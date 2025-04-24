@@ -2,6 +2,7 @@
     <div class="flex justify-between items-center mb-5 overflow-auto">
         <h1 class="text-3xl font-bold mb-2 text-center text-gray-800">{{ $page_title }} records</h1>
     </div>
+    @include('components.alert')
     <table class="min-w-full border border-gray-200 shadow-lg" id="{{ $resource }}-table">
         <thead class="bg-[#1A4798]">
             <tr class="text-white uppercase text-md leading-normal">
@@ -18,9 +19,9 @@
                 <td class="py-1 px-4">{{ $record->first_name }} {{ $record->middle_name }} {{ $record->last_name }}</td>
                 <td class="py-1 px-4">{{ $record->userDisability->disability->name ?? 'N/A' }}</td>
                 <td class="py-1 px-4">{{ $record->scorePercent  }} %</td>
-                <td class="py-1 px-4">{{ $record->excel        }} %</td>
-                <td class="py-1 px-4">{{ $record->ppt          }} %</td>
-                <td class="py-1 px-4">{{ $record->totalPercent }} %</td>
+                <td class="py-1 px-4">{{ number_format($record->excel, 2) }} %</td>
+                <td class="py-1 px-4">{{ number_format($record->ppt, 2)         }} %</td>
+                <td class="py-1 px-4">{{ number_format($record->totalPercent, 2) }} %</td>
 
                 <td class="py-1 px-4">
                     <div x-data="{ open: false, addExcelScore: false, addPptScore: false }"

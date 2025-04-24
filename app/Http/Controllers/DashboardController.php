@@ -18,17 +18,20 @@ class DashboardController extends Controller
         $columns = ['Name', 'Disability', 'Gen knowledge', 'Ms Excel', 'Ms Ppt', 'Total', 'Action'];
         $contestants = User::getAllContestants()
         ->map(function($user) {
-            $excelModel = Score::getUserExcelScore($user->id);
-            $pptModel   = Score::getUserPptScore($user->id);
-            $user->excel = optional($excelModel)->score ?? 0;
-            $user->ppt   = optional($pptModel)->score   ?? 0;
+            // excel ppt score
+            $numberOfItems = 15;
+            $excelScore = optional(Score::getUserExcelScore($user->id))->score ?? 0;
+            $pptScore = optional(Score::getUserPptScore($user->id))->score ?? 0;
+            $user->excel = ($excelScore / $numberOfItems) * 100;
+            $user->ppt   = ($pptScore / $numberOfItems) * 100;
+            // gen knowledge
             $results           = Answer::getResultsForUser($user->id);
             $total             = $results->count();
             $correct           = $results->where('is_correct', true)->count();
             $user->scorePercent = $total
                 ? round($correct / $total * 100, 2)
                 : 0;
-                
+            // computation of total
             $parts = array_filter([
                 $user->scorePercent,
                 $user->excel,

@@ -22,8 +22,8 @@
             <div class="my-3">
                 <input type="hidden" name="remarks" value="excel">
                 <label for="score" class="block text-md text-gray-700">Excel score:</label>
-                <input type="number" id="score" name="score" placeholder="Score" value="{{ old('score', $record->excel) ?? '' }}" step="0.01"
-                    min="0" max="100" inputmode="decimal" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md
+                <input type="number" id="score" name="score" placeholder="Score" value="{{ old('score', $record->excelScore) ?? '' }}" step="0.01"
+                    min="0" max="15" inputmode="decimal" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md
                 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
                 @error('score')
                 <p class="text-sm text-red-600">{{ $message }}</p>

@@ -14,7 +14,7 @@ class ScoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'score'   => ['required', 'numeric', 'between:0,100'],
+            'score'   => ['required', 'numeric', 'between:0,15'],
             'remarks' => ['required', 'in:excel,ppt'],
         ];
     }
