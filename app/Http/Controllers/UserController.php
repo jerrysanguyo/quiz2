@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Answer;
 use App\Models\Disability;
+use App\Models\Score;
 use App\DataTables\CmsDataTable;
 use App\Http\Requests\UserRequest;
 use App\Services\UserService;
@@ -104,7 +105,7 @@ class UserController extends Controller
             'results',
             'totalQuestions',
             'correctAnswers',
-            'scorePercent'
+            'scorePercent',
         ));
     }
 }

@@ -1,9 +1,9 @@
-<div class="w-full bg-white p-8 rounded-lg shadow-lg border border-gray-200 overflow-auto max-h-[80vh] min-h-[80vh]">
+<div class="w-full bg-white p-2 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg border border-gray-200">
     <div class="flex justify-between items-center mb-5 overflow-auto">
         <h1 class="text-3xl font-bold mb-2 text-center text-gray-800">{{ $page_title }} records</h1>
     </div>
     @include('components.alert')
-    <table class="min-w-full border border-gray-200 shadow-lg" id="{{ $resource }}-table">
+    <table class="min-w-full border border-gray-200 shadow-lg overflow-x-auto" id="{{ $resource }}-table">
         <thead class="bg-[#1A4798]">
             <tr class="text-white uppercase text-md leading-normal">
                 @foreach ($columns as $column)

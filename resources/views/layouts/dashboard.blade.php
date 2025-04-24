@@ -43,7 +43,8 @@
                             class="fa-solid fa-minus text-white"></i></span>
                 </div>
 
-                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.dashboard') }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.dashboard') }}"
+                    class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-table-columns me-2"></i> Dashboard</span>
                     <span x-show="sidebarCollapsed" x-cloak
@@ -57,7 +58,8 @@
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-minus text-white"></i></span>
                 </div>
-                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.general') }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.general') }}"
+                    class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i class="fa-solid fa-brain me-2"></i>
                         General knowledge</span>
                     <span x-show="sidebarCollapsed" x-cloak
@@ -105,7 +107,8 @@
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-clipboard-question"></i></span>
                 </a>
-                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.disability.index') }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.disability.index') }}"
+                    class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-wheelchair me-2"></i>
                         Disability</span>
@@ -147,14 +150,16 @@
                     <div x-show="userDropdownOpen" x-cloak x-transition
                         class="absolute left-0 bottom-full mb-2 w-full bg-white shadow-md rounded z-10">
                         @if (Auth::user()->getRoleNames()->first() === 'superadmin')
-                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.role.index') }}" class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
+                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.role.index') }}"
+                            class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
                             <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                                     class="fa-solid fa-user-tie me-2"></i> Role</span>
                             <span x-show="sidebarCollapsed" x-cloak
                                 class="flex items-center justify-center w-full h-full font-medium"><i
                                     class="fa-solid fa-user-tie"></i></span>
                         </a>
-                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.permission.index') }}" class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
+                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.permission.index') }}"
+                            class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
                             <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                                     class="fa-solid fa-lock me-2"></i> Permission</span>
                             <span x-show="sidebarCollapsed" x-cloak
@@ -162,7 +167,8 @@
                                     class="fa-solid fa-lock"></i></span>
                         </a>
                         @endif
-                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.profile') }}" class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
+                        <a href="{{ route(Auth::user()->getRoleNames()->first() . '.profile') }}"
+                            class="block py-2 px-3 hover:bg-[#F4C027] hover:text-black text-black transition">
                             <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                                     class="fa-solid fa-user me-2"></i> Profile</span>
                             <span x-show="sidebarCollapsed" x-cloak
@@ -189,13 +195,13 @@
 
         <div class="flex-1 flex flex-col transition-all duration-200"
             :class="sidebarCollapsed ? 'lg:ml-18' : 'lg:ml-64'">
-            <div class="bg-white flex-1 shadow-lg rounded-lg p-6 m-3">
-                <nav class="mb-3">
+            <div class="bg-white flex-1 shadow-lg lg:rounded-lg lg:p-6 lg:m-3">
+                <nav class="mb-3 lg:mt-0 sm:mt-3 md:mt-5">
                     @hasSection('breadcrumb')
                     @yield('breadcrumb')
                     @endif
                 </nav>
-                <main class="p-5 overflow-y-auto">
+                <main class="p-5 overflow-auto">
                     @yield('content')
                 </main>
             </div>
