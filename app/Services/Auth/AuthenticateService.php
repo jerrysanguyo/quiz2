@@ -4,6 +4,7 @@ namespace App\Services\Auth;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\AuthenticationException;
 
 class AuthenticateService
 {
@@ -15,7 +16,7 @@ class AuthenticateService
             return Auth::user();
         }
 
-        return null;
+        throw new AuthenticationException('Invalid login credentials.');
     }
 
     public function logout(): ?User

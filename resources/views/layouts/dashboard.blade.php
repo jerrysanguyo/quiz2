@@ -10,8 +10,10 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
+    <!-- @vite('resources/css/app.css')
+    @vite('resources/js/app.js') -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DsDSphub.css') }}">
+    <script type="module" src="{{ asset('build/assets/app-CrVa0K3G.js') }}"></script>
 </head>
 
 <body class="bg-[#ff5147] text-gray-800">
@@ -66,7 +68,7 @@
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-brain"></i></span>
                 </a>
-                <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.excel')  }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-file-excel me-2"></i>
                         Ms Excel</span>
@@ -74,7 +76,7 @@
                         class="flex items-center justify-center w-full h-full font-medium"><i
                             class="fa-solid fa-file-excel"></i></span>
                 </a>
-                <a href="#" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
+                <a href="{{ route(Auth::user()->getRoleNames()->first() . '.ppt')  }}" class="block py-2 px-3 rounded hover:bg-[#F4C027] hover:text-black text-white transition">
                     <span x-show="!sidebarCollapsed" x-cloak class="font-medium"><i
                             class="fa-solid fa-file-powerpoint me-2"></i>
                         Ms Power point</span>

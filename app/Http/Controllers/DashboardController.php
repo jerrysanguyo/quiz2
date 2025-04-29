@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Score;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Optional;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {
@@ -66,5 +68,31 @@ class DashboardController extends Controller
             'pptScore',
             'summary',
         ));
+    }
+
+    public function excel()
+    {
+        $filePath = public_path('etool/eTool_excel_local.xlsx');
+    
+        if (!File::exists($filePath)) {
+            abort(404, 'Excel file not found.');
+        }
+    
+        $fileName = Auth::user()->first_name . '_' . Auth::user()->id . '-etool-excel.xlsx';
+    
+        return response()->download($filePath, $fileName);
+    }
+    
+    public function ppt()
+    {
+        $filePath = public_path('etool/eTool_PPT_local.pptx');
+    
+        if (!File::exists($filePath)) {
+            abort(404, 'PPT file not found.');
+        }
+    
+        $fileName = Auth::user()->first_name . '_' . Auth::user()->id . '-etool-ppt.pptx';
+    
+        return response()->download($filePath, $fileName);
     }
 }

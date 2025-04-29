@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DsDSphub.css') }}">
+    <script type="module" src="{{ asset('build/assets/app-CrVa0K3G.js') }}"></script>
 </head>
 
 <body class="min-h-screen bg-welcome bg-cover bg-no-repeat bg-fixed bg-center">
@@ -15,7 +17,7 @@
         <a href="{{ url('/home') }}"
             class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Home</a>
         @else
-        <a href="{{ route('login.index') }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Log
+        <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Log
             in</a>
         @if (Route::has('register'))
         <a href="{{ route('register') }}"

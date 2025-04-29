@@ -51,21 +51,30 @@ class UserSeeder extends Seeder
             $digits   = preg_replace('/\D/', '', $item['pwd_id']);
             $password = substr($digits, -7);
 
-            $user = User::create([
-                'first_name'  => $item['first'],
-                'middle_name' => $item['middle'],
-                'last_name'   => $item['last'],
-                'email'       => $email,
-                'password'    => $password, 
-            ]);
+            $user = User::firstOrCreate(
+                [
+                    'email'       => $email
+                ],
+                [
+                    'first_name'  => $item['first'],
+                    'middle_name' => $item['middle'],
+                    'last_name'   => $item['last'],
+                    'email'       => $email,
+                    'password'    => $password, 
+                ]
+            );
             $user->assignRole('user');
             
             $dis = Disability::where('name', $item['disability'])->first();
             if ($dis) {
-                UserDisability::create([
-                    'user_id'       => $user->id,
-                    'disability_id' => $dis->id,
-                ]);
+                UserDisability::firstOrcreate(
+                    [
+                        'user_id'       => $user->id,
+                    ],
+                    [
+                        'disability_id' => $dis->id,
+                    ]
+                );
             }
         }
     }
